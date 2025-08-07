@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書籍検索</title>
+</head>
+<body>
+  <h1>書籍検索</h1>
+  <table border="1">
+    <tr>
+      <th>書籍コード</th>
+      <th>書籍名</th>
+      <th>値段</th>
+      <th>著者</th>
+    </tr>
+    <!-- 変数bookにbooksの値を連続で取得 -->
+    <tr th:each="book : ${books}">
+      <td th:text="${book.code}"></td>
+      <td th:text="${book.name}"></td>
+      <td th:text="${book.price}"></td>
+      <td th:text="${book.author}"></td>
+    </tr>
+  </table>
+</body>
+</html>
