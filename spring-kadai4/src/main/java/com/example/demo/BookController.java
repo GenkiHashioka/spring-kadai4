@@ -104,4 +104,11 @@ public class BookController {
 		return mv;
 	}
 	
+	// 項目の新規作成用
+	@RequestMapping("/add")
+	public ModelAndView showCreatePage(ModelAndView mv) {
+		mv.setViewName("book_create");
+		return mv;
+	}
+	
 }
