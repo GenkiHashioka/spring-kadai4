@@ -7,6 +7,13 @@
 </head>
 <body>
   <h1>書籍検索</h1>
+  <!-- 検索ボタンの追加 -->
+  <form action="/search" method="get">
+    書籍コード:<input type="number" name="code" th:value="${code}">
+    <button>検索</button>
+  </form>
+  <!-- エラーメッセージ -->
+  <div th:if="${message != null}" style="color: red;" th:text="${message}"></div>
   <table border="1">
     <tr>
       <th>書籍コード</th>
