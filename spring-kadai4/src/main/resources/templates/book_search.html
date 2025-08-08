@@ -25,6 +25,8 @@
         <th>著者</th>
         <!-- step4更新欄の追加 -->
          <th>更新</th>
+         <!-- step6削除画面追加対応 -->
+          <th>削除</th>
       </tr>
       <!-- 変数bookにbooksの値を連続で取得 -->
       <tr th:each="book : ${books}">
@@ -38,6 +40,13 @@
             <input type="hidden" name="code" th:value="${book.code}">
             <button>更新</button>
           </form>
+        </td>
+        <td>
+          <!-- 削除ボタンの追加 -->
+           <form th:action="@{/delete}" method="post">
+            <input type="hidden" name="code" th:value="${book.code}">
+            <button>削除</button>
+           </form>
         </td>
       </tr>
     </table>

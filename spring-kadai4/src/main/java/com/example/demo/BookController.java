@@ -93,4 +93,15 @@ public class BookController {
 		return mv;
 	}
 	
+//	削除機能の追加
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ModelAndView deleteBook(@RequestParam("code") Long code, ModelAndView mv) {
+		bookRepository.deleteById(code);
+		
+		// 削除後の一覧の取得
+		mv.addObject("books", bookRepository.findAll(Sort.by("code")));
+		mv.setViewName("book_search");
+		return mv;
+	}
+	
 }
