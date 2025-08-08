@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書籍情報の更新</title>
+</head>
+<body>
+  <h1>書籍更新</h1>
+  <form>
+    <table>
+      <tr>
+        <td>書籍コード</td>
+        <td>
+          <input type="text" th:value="${book.code}" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td>値段</td>
+        <td>
+          <input type="text" th:value="${book.price}" readonly>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <button>更新</button>
+  </form>
+</body>
+</html>

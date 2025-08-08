@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,4 +51,21 @@ public class BookController {
 		mv.setViewName("book_search");
 		return mv;
 	}
+	// step4追加対応 更新処理の追加
+	@RequestMapping("/update")
+	public ModelAndView showUpdatePage(@RequestParam("code") Long code, ModelAndView mv) {
+//		bookRepositoryからcodeに一致する書籍データを取り出す。
+		Optional<Book> choiceBook = bookRepository.findById(code);
+		// 値があればbookという名前でbook_update.htmlにわたす。
+		if (choiceBook.isPresent()) {
+			mv.addObject("book", choiceBook.get());
+			mv.setViewName("book_update"); // 更新画面に遷移
+//			 万が一値が見つからなかった場合のエラーハンドリング
+		} else {
+			mv.addObject("message", "該当するデータはありません。");
+			mv.setViewName("book_search"); // 元の画面に戻る
+		}
+		return mv;
+	}
+	
 }
