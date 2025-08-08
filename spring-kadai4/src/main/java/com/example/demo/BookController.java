@@ -104,11 +104,29 @@ public class BookController {
 		return mv;
 	}
 	
-	// 項目の新規作成用
+	// 項目の新規作成用画面の表示 (get)
 	@RequestMapping("/add")
 	public ModelAndView showCreatePage(ModelAndView mv) {
 		mv.setViewName("book_create");
 		return mv;
 	}
 	
+	// 項目の新規作成処理。(post)
+		@RequestMapping(value = "/add", method = RequestMethod.POST)
+		public ModelAndView createBook(
+				@RequestParam("name") String name,
+				@RequestParam("price") Long price,
+				@RequestParam("author") String author,
+				ModelAndView mv) {
+			Book newBook = new Book();
+			newBook.setName(name);
+			newBook.setPrice(price);
+			newBook.setAuthor(author);
+			bookRepository.save(newBook);
+			
+//			登録後は一覧を表示
+			mv.addObject("books", bookRepository.findAll(Sort.by("code")));
+			mv.setViewName("book_search");
+			return mv;
+		}
 }
