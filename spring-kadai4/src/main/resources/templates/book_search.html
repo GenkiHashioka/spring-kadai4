@@ -34,7 +34,7 @@
         <td th:text="${book.author}"></td>
         <td>
           <!-- 更新ボタンの作成 -->
-          <form th:action="@{/update}" method="get">
+          <form th:action="@{/edit}" method="get">
             <input type="hidden" name="code" th:value="${book.code}">
             <button>更新</button>
           </form>

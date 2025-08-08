@@ -29,4 +29,12 @@ public class Book {
 	public String getAuthor() {
 		return author;
 	}
+	// 価格編集用のセッター
+	public void setCode(Long code) {
+		this.code = code;
+	}
+	
+	public void setPrice(Long price) {
+		this.price = price;
+	}
 }

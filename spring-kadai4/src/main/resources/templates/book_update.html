@@ -7,18 +7,20 @@
 </head>
 <body>
   <h1>書籍更新</h1>
-  <form>
+  <!-- step5 更新機能の追加 -->
+  <form th:action="@{/update}" method="post">
     <table>
       <tr>
         <td>書籍コード</td>
         <td>
-          <input type="text" th:value="${book.code}" readonly>
+          <!-- 読み取り専用 -->
+          <input type="text" name="code" th:value="${book.code}" readonly>
         </td>
       </tr>
       <tr>
         <td>値段</td>
         <td>
-          <input type="text" th:value="${book.price}" readonly>
+          <input type="text" name="price" th:value="${book.price}">
         </td>
       </tr>
     </table>
